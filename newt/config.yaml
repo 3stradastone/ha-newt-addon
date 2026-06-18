@@ -1,0 +1,33 @@
+# Minimal, correctly-scoped Newt (Pangolin tunnel) add-on.
+# Privileges are deliberately limited to what a WireGuard tunnel needs:
+#   - host_network: bind the tunnel on the host's network stack
+#   - NET_ADMIN / NET_RAW: create/configure the WireGuard interface
+# It does NOT request full_access, docker_api, hassio_api, an /config map,
+# and it does NOT disable AppArmor — unlike the community add-ons.
+name: Newt
+version: "1.0.0"
+slug: newt
+description: Pangolin tunnel connector (Newt) — minimal privileges, wraps fosrl/newt:latest.
+url: https://github.com/3stradastone/ha-newt-addon
+# Multi-arch: matches the upstream fosrl/newt image (amd64, aarch64, armv7).
+arch:
+  - amd64
+  - aarch64
+  - armv7
+startup: services
+boot: auto
+init: false
+host_network: true
+privileged:
+  - NET_ADMIN
+  - NET_RAW
+options:
+  pangolin_endpoint: ""
+  newt_id: ""
+  newt_secret: ""
+  log_level: "INFO"
+schema:
+  pangolin_endpoint: url
+  newt_id: str
+  newt_secret: password
+  log_level: list(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)?
