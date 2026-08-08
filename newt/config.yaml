@@ -5,7 +5,7 @@
 # It does NOT request full_access, docker_api, hassio_api, an /config map,
 # and it does NOT disable AppArmor — unlike the community add-ons.
 name: Newt
-version: "1.0.0"
+version: "1.0.1"
 slug: newt
 description: Pangolin tunnel connector (Newt) — minimal privileges, wraps fosrl/newt:latest.
 url: https://github.com/3stradastone/ha-newt-addon
